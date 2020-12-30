@@ -82,6 +82,9 @@ void setup() {
 
   u8g2.begin();
   u8g2.setFont(DEFAULTFONT);
+
+//   Serial.begin(115200);
+//   Serial.println("boot complete");
 }
 
 // ============== screen related code =============
@@ -158,7 +161,7 @@ void updateScreen(bool bumpPhase, float seek){
   }
   if ( stringsDraw ){
     line1Len = u8g2.drawUTF8(line1Offset, LINE1, cc.displayName);
-    if ( cc.title[0] != '\0') { //two line mode
+    if ( cc.title[0] == '\0') { //two line mode
       line2Len = u8g2.drawUTF8(line2Offset, LINE2, cc.statusText);
     } else { //four line mode
       line2Len = u8g2.drawUTF8(line2Offset, LINE2, cc.artist);
